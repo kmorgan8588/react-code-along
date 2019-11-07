@@ -2,7 +2,7 @@ import React from 'react';
 
 const Decrementer = props => (
     <div>
-        <button>Decrement</button>
+        <button name='Decrementer' onClick={() => props.CounterUpdate(props.state - 1)}>Decrement</button>
     </div>
 );
 

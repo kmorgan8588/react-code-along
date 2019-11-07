@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Counter from './components/counter.jsx';
 import Incrementer from './components/incrementer.jsx';
@@ -12,7 +11,20 @@ class App extends React.Component {
     this.state = {
       value: 0,
     };
+    this.CounterUpdate = this.CounterUpdate.bind(this);
+    this.Reset = this.Reset.bind(this);
+  }
 
+  Reset() {
+    this.setState({
+      value: 0,
+    })
+  }
+
+  CounterUpdate(value) {
+    this.setState({
+      value: value,
+    });
   }
   render() {
     return (
@@ -21,9 +33,9 @@ class App extends React.Component {
         </h1>  
         <Counter count={this.state.value}/>
         <div>
-          <Decrementer />
-          <Incrementer />
-          <Reset />
+          <Decrementer state={this.state.value} CounterUpdate={this.CounterUpdate} />
+          <Incrementer state={this.state.value} CounterUpdate={this.CounterUpdate} />
+          <Reset onClick={this.Reset} />
         </div>
       </div>
     );
